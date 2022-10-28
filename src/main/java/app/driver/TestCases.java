@@ -27,10 +27,10 @@ public class TestCases {
 
 		try {
 			fill_Users();
-			
+			//case1();
 			case_simulate_ride();
 			
-			case_Using_In_Loop();
+			//case_Using_In_Loop();
 			//case_Using_In_Loop();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class TestCases {
 		location[0]=0;
 		location[1]=1;
 		//both drivers at 0,1
-		driverService.add_Driver("Menaka", "Female", 19, "Swift K2 2334",location);
+		driverService.add_Driver("Menaka", "Female", 19, "Swift K2 2334",location, 1);
 		driverService.add_Driver("Abhijit", "Male", 19, "Wagonr F3 2445", location);
 		int[] location1 = new int[2];
 		location1[0]=1;
@@ -98,7 +98,17 @@ public class TestCases {
 			for(Driver d : list) {
 				System.out.println(d);
 			}
-			rideService.choose_Ride("Abhishek", list.get(0).getName());
+			rideService.choose_Ride("Ashish", list.get(0).getName());
+		}
+		source[0]=8;
+		source[1]=8;
+		list = rideService.find_Ride("Abhjit", source, destination);
+		if(list != null && list.size() > 0) {
+			System.out.println("\nFollowing Drivers are found.");
+			for(Driver d : list) {
+				System.out.println(d);
+			}
+			rideService.choose_Ride("Abhijit", list.get(0).getName());
 		}
 	}
 	public void case_simulate_ride() throws Exception{
@@ -110,7 +120,7 @@ public class TestCases {
 		
 			rideService.choose_Ride_in_loop("Abhishek", source, destination, 5);
 		
-		Thread.sleep(500);
+		Thread.sleep(300);
 		
 			rideService.choose_Ride_in_loop("Abhishek", source, destination, 5);
 		

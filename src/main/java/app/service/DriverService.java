@@ -42,6 +42,31 @@ public class DriverService implements IDriverService{
 		}
 		return driver;
 	}
+
+	public Driver add_Driver(String name, String gender, int age, String carDetails, int[] location, int rating) {
+		Driver driver = null;
+		Gender genderEnum = null;
+		try {
+			genderEnum = Gender.valueOf(gender);
+		
+		if(name != null) {
+			driver = new Driver(name, genderEnum, age, carDetails, location, rating);
+			if(!driverRepository.addDriver(driver)) {
+				return driver=null;
+			}else {
+				//concurrent
+				mapRepository.addDriver(driver);
+			}
+		}else {
+			System.out.println("Please provide correct name");
+		}
+		}catch(IllegalArgumentException e) {
+			System.out.println("Incorrect Gender");
+		}catch(Exception e) {
+			System.out.println("Error "+e.getMessage());
+		}
+		return driver;
+	}
 	
 	public boolean rate_Driver(String name, int rating) {
 		Driver driver = driverRepository.getDriver(name);
