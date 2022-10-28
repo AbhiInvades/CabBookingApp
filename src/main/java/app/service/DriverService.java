@@ -31,6 +31,7 @@ public class DriverService implements IDriverService{
 			}else {
 				//concurrent
 				mapRepository.addDriver(driver);
+				System.out.println("Added "+name+" Driver");
 			}
 		}else {
 			System.out.println("Please provide correct name");
@@ -42,7 +43,7 @@ public class DriverService implements IDriverService{
 		}
 		return driver;
 	}
-
+	
 	public Driver add_Driver(String name, String gender, int age, String carDetails, int[] location, int rating) {
 		Driver driver = null;
 		Gender genderEnum = null;
@@ -56,6 +57,7 @@ public class DriverService implements IDriverService{
 			}else {
 				//concurrent
 				mapRepository.addDriver(driver);
+				System.out.println("Added "+name+" Driver");
 			}
 		}else {
 			System.out.println("Please provide correct name");

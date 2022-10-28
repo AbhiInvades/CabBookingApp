@@ -31,7 +31,12 @@ public class UserService implements IUserService{
 	    }
 	    else {
 	    	user = new User(name, genderEnum, age);
-	    	userRepository.addUser(user);
+	    	boolean result = userRepository.addUser(user);
+	    	if(result) {
+	    		System.out.println("Added "+name);
+	    	}else {
+	    		System.out.println("Username already taken");
+	    	}
 	    }
 		return user;
 	}

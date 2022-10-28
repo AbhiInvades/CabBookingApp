@@ -20,7 +20,6 @@ import app.service.RideService;
 import app.service.UserService;
 
 @SpringBootApplication
-@ComponentScan("app")
 public class CabBookingAppApplication implements CommandLineRunner{
 	@Autowired
 	public TestCases testcases;
